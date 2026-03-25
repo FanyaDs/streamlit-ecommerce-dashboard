@@ -2,9 +2,9 @@
 
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white) 
 
-**Live Dashboard App:** [Akses Klik Disini](https://appapppy.streamlit.app/)
-
 Dashboard analisis data E-Commerce menggunakan interaktif Streamlit berdasarkan dataset E-Commerce Public Dataset. Proyek ini dibangun untuk memenuhi kriteria kelulusan kelas Dicoding.
+
+- Ini adalah dashboard **Lokal**. Pastikan semua file data tersedia untuk dijalankan di perangkat Anda.
 
 ## Setup Environment - Python virtualenv
 ```bash
@@ -31,8 +31,7 @@ pip install -r requirements.txt
 ```
 
 ## Run Streamlit App
-Untuk menjalankan aplikasi, arahkan terminal ke direktori folder ini (`submission`) dan jalankan:
+Untuk menjalankan aplikasi, pastikan Anda berada di direktori `submission` dan jalankan perintah:
 ```bash
-cd dashboard
-streamlit run dashboard.py
+streamlit run dashboard/dashboard.py
 ```
