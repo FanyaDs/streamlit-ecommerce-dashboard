@@ -64,6 +64,11 @@ def create_rfm_df(df):
     )
     return rfm
 
+def create_state_df(df):
+    state_df = df.groupby("customer_state").order_id.nunique().sort_values(ascending=False).reset_index()
+    state_df.columns = ["state", "order_count"]
+    return state_df
+
 # ==============================
 # Load Data
 # ==============================
@@ -142,7 +147,7 @@ with col3:
 st.markdown("<br>", unsafe_allow_html=True)
 
 # Layout per Tabs
-tab1, tab2, tab3 = st.tabs(["📈 Tren Transaksi", "🛒 Produk Terlaris", "💎 RFM Segmen Pelanggan"])
+tab1, tab2, tab3, tab4 = st.tabs(["📈 Tren Transaksi", "🛒 Produk Terlaris", "🌍 Demografi State", "💎 RFM Segmen Pelanggan"])
 
 with tab1:
     st.header("Pergerakan Transaksi per Bulan")
@@ -215,6 +220,35 @@ with tab2:
             st.success(f"Produk paling populer adalah kategori **{top_products.index[0]}** dengan total **{top_products.values[0]}** pesanan!")
 
 with tab3:
+    st.header("Distribusi Pelanggan per State")
+    st.markdown("Melihat wilayah mana yang memberikan kontribusi transaksi terbanyak.")
+    
+    if "customer_state" in main_df.columns:
+        state_df = create_state_df(main_df)
+        
+        fig_state, ax_state = plt.subplots(figsize=(12, 6))
+        sns.barplot(
+            x="state", 
+            y="order_count", 
+            data=state_df.head(10), 
+            palette="viridis",
+            ax=ax_state
+        )
+        
+        ax_state.set_title("Top 10 State dengan Jumlah Transaksi Terbanyak", fontsize=16, fontweight='bold', pad=15)
+        ax_state.set_xlabel("State", fontsize=12)
+        ax_state.set_ylabel("Jumlah Pesanan", fontsize=12)
+        sns.despine(left=True)
+        
+        # Tambahkan label angka
+        for p in ax_state.patches:
+            ax_state.annotate(f'{int(p.get_height())}', (p.get_x() + p.get_width() / 2., p.get_height()), 
+                        ha='center', va='center', xytext=(0, 10), textcoords='offset points', fontweight='bold')
+            
+        st.pyplot(fig_state)
+        st.write(f"Negara bagian **{state_df.iloc[0]['state']}** merupakan wilayah dengan aktivitas belanja tertinggi.")
+
+with tab4:
     st.header("Segmentasi Pelanggan (RFM Analysis)")
     st.markdown("Metrik **Recency, Frequency, Monetary** digunakan untuk memetakan kepatuhan belanja pelanggan.")
     
