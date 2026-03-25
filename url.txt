@@ -1,1 +1,1 @@
-https://fanyads-ecommerce-dashboard.streamlit.app/
+https://appapppy.streamlit.app/
