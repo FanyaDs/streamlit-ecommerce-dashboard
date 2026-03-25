@@ -1,0 +1,6 @@
+order_id,customer_id,product_category_name,order_purchase_timestamp,price
+ord_001,cust_001,cama_mesa_banho,2018-05-15 10:00:00,150.0
+ord_002,cust_002,beleza_saude,2018-05-16 11:00:00,80.0
+ord_003,cust_001,esporte_lazer,2018-06-12 14:00:00,120.0
+ord_004,cust_003,cama_mesa_banho,2018-07-15 15:30:00,50.0
+ord_005,cust_004,informatica_acessorios,2018-07-20 09:00:00,200.0
