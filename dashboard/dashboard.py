@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
+import os
 
 # ==============================
 # Setup Page Config & Custom CSS
@@ -68,7 +69,10 @@ def create_rfm_df(df):
 # ==============================
 @st.cache_data
 def load_data():
-    df = pd.read_csv("main_data.csv")
+    pwd = os.path.dirname(__file__)
+    file_path = os.path.join(pwd, "main_data.csv")
+    
+    df = pd.read_csv(file_path)
     datetime_cols = ["order_purchase_timestamp", "order_approved_at", "order_delivered_carrier_date", "order_delivered_customer_date"]
     for col in datetime_cols:
         if col in df.columns:
@@ -78,7 +82,7 @@ def load_data():
 try:
     all_df = load_data()
 except Exception as e:
-    st.error("❌ File 'main_data.csv' tidak ditemukan atau gagal dimuat. Pastikan file ada di dalam folder 'dashboard'!")
+    st.error(f"❌ File 'main_data.csv' gagal dimuat! Pastikan file berada di folder yang sama. Log Error: {e}")
     st.stop()
 
 # ==============================
