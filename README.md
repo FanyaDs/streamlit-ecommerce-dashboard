@@ -1,6 +1,10 @@
-# E-Commerce Dashboard ✨
+# 🌟 E-Commerce Dashboard ✨
 
-Dashboard analisis data E-Commerce menggunakan Streamlit berdasarkan E-Commerce Public Dataset.
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white) 
+
+**Live Dashboard App:** [Akses Klik Disini](https://fanyads-ecommerce-dashboard.streamlit.app/)
+
+Dashboard analisis data E-Commerce menggunakan interaktif Streamlit berdasarkan dataset E-Commerce Public Dataset. Proyek ini dibangun untuk memenuhi kriteria kelulusan kelas Dicoding.
 
 ## Setup Environment - Python virtualenv
 ```bash
